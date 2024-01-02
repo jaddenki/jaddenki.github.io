@@ -31,7 +31,7 @@ body {
 /* The typing effect */
 @keyframes typing {
   0% { width: 0 }
-  100% { width: 450px }
+  100% { width: 810px }
 }
 
 /* The typewriter cursor effect */
@@ -48,7 +48,7 @@ body {
 #sub-header {
   text-align: center;
   margin-top: 10px;
-  max-width: 300px;
+  max-width: 600px;
   margin: 0 auto;
   z-index: 1;
 }
