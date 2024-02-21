@@ -21,22 +21,22 @@ body {
   font-weight: bolder;
   color: var(--black);
   overflow: hidden;
-  border-right: .15em solid rgba(98, 96, 206, 100); /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  letter-spacing: .01em; /* Adjust as needed */
+  border-right: .15em solid rgba(98, 96, 206, 100); /* cursor !!! */
+  white-space: nowrap; 
+  letter-spacing: .01em; 
   width: fit-content;
   animation: 
     typing 3.4s steps(20, end),
     blink-caret .45s step-end infinite;
 }
 
-/* The typing effect */
+/* the typing effect */
 @keyframes typing {
   0% { width: 0% }
   100% { width: 100% }
 }
 
-/* The typewriter cursor effect */
+/* cursor effect */
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: rgba(98, 96, 206, 100) }
@@ -93,10 +93,7 @@ hr {
   text-decoration:none;
 }
 
-/*#projectDisplay{
-
-}*/
-/* Animated Circles CSS */
+/* circles FLOATING */
 
 .circles {
 	position: absolute;
@@ -180,6 +177,7 @@ hr {
 
 }
 
+/* circle animation*/
 
 @keyframes animate {
 	0% {
@@ -212,3 +210,6 @@ hr {
 }
 
 /* end of circles */
+
+
+/* draggable divs go down here*/
