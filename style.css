@@ -21,7 +21,7 @@ body {
   font-weight: bolder;
   color: var(--black);
   overflow: hidden;
-  border-right: .15em solid rgba(98, 96, 206, 100); /* cursor !!! */
+  border-right: .15em solid var(--blue); /* cursor !!! */
   white-space: nowrap; 
   letter-spacing: .01em; 
   width: fit-content;
@@ -39,7 +39,7 @@ body {
 /* cursor effect */
 @keyframes blink-caret {
   from, to { border-color: transparent }
-  50% { border-color: rgba(98, 96, 206, 100) }
+  50% { border-color: var(--blue) }
 }
 
 
@@ -55,21 +55,21 @@ hr {
 }
 
 #sub-header {
-  text-align: left;
+  text-align: center;
   max-width: 600px;
-  z-index: 1;
+  z-index: 4;
 }
 
 #sub-header p {
   text-align:left;
-  font-size: 24px;
-  color: var(--blue);
+  font-size: 18px;
+  color: var(--black);
 }
 
 #projects {
   text-align: left;
   margin-top: 18px;
-  z-index: 1;
+  z-index: 4;
 }
 
 #projects a {
@@ -82,7 +82,7 @@ hr {
 #old {
   text-align: left;
   margin-top: 10px;
-  z-index: 1;
+  z-index: 4;
 }
 
 #old a {
@@ -92,6 +92,10 @@ hr {
   margin-bottom: 10px;
   text-decoration:none;
 }
+#old:hover {
+  color: var(--blue);
+}
+
 
 /* circles FLOATING */
 
@@ -101,7 +105,7 @@ hr {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	z-index: 2;
+	z-index: 1;
   pointer-events: none; 
 
 }
@@ -113,7 +117,7 @@ hr {
 	width: 50px;
 	height: 50px;
 	background: rgba(46, 44, 44, 0);
-  border: 15px solid rgba(46, 44, 44, 100); /* White semi-transparent border */
+  border: 15px solid var(--black); /* White semi-transparent border */
   border-radius: 50%;
 	animation: animate 25s linear infinite;
 	bottom: -100px;
@@ -126,7 +130,7 @@ hr {
 	animation-delay: 5s;
 	animation-duration: 31s;
 	border-radius: 25%;
-  border: 30px solid rgba(46, 44, 44, 100); /* White semi-transparent border */
+  border: 30px solid var(--blue); /* White semi-transparent border */
   bottom: -400px;
 
 }
@@ -138,8 +142,8 @@ hr {
 	animation-delay: 3s;
 	animation-duration: 25s;
 	border-radius: 50%;
-  background:rgba(98, 96, 206, 100); 
-  border: 20px solid rgba(98, 96, 206, 100); 
+  background: var(--blue); 
+  border: 20px solid var(--blue); 
 }
 
 .circles li:nth-child(3) {
@@ -149,7 +153,7 @@ hr {
 	animation-delay: 0s;
 	animation-duration: 40s;
 	border-radius: 50%;
-  border: 20px solid rgba(98, 96, 206, 100); 
+  border: 20px solid var(--blue); 
   bottom: -800px;
 
 }
@@ -159,7 +163,7 @@ hr {
 	width: 80px;
 	height: 80px;
   animation: rotateShape2 25s linear infinite;
-  border: 20px solid rgba(98, 96, 206, 100); 
+  border: 20px solid var(--black); 
 	border-radius: 50%;
   bottom: -150px;
 
@@ -170,7 +174,7 @@ hr {
 	width: 30px;
 	height: 30px;
 	animation-delay: 2s;
-	background: rgba(46, 44, 44, 100);
+	background: var(--black);
   animation: rotateShape2 25s linear infinite;
 	animation-duration: 28s;
 	border-radius: 25%;
