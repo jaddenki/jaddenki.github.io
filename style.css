@@ -1,5 +1,5 @@
 body {
-  background-color: #E9E5E1;
+  background-color: #ffffff;
   font-family: 'Helvetica', sans-serif;
   overflow: hidden;
   cursor: url('circleCursor.png'), auto;
@@ -12,7 +12,7 @@ body {
 }
 :root {
   --black: #1a171e;
-  --blue: #6260CE;
+  --blue: #c2e049;
 }
 
 
