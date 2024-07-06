@@ -1,7 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", function() {
   const textElement = document.getElementById("typing-text");
-  const textToType = `        computer engineering student with a passion for motion design, from las vegas, nv`;
+  const textToType = `computer engineering student with a passion for motion design, from las vegas, nv`;
 
   let index = 0;
   let isTag = false;
