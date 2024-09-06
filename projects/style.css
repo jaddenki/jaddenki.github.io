@@ -1,10 +1,12 @@
 :root {
-  --main: #c2e049;
-  --main2:#387a65;
+  --main: #9b4f6d;
+  --main2:#0c2436;
 }
+
 
 p {
   margin-top: 0; 
+  font-size: 18px;
   color:var(--main2);
 }
 

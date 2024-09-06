@@ -1,11 +1,11 @@
 :root {
-  --main: #c2e049;
-  --main2:#387a65;
+  --main: #9b4f6d;
+  --main2:#0c2436;
 }
 
 
 body {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   overflow: hidden;
   font-family: Helvetica, sans-serif;
   margin: 0;
