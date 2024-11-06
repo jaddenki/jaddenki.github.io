@@ -1,217 +1,222 @@
+/* General Reset */
 :root {
   --main: #9b4f6d;
-  --main2:#0c2436;
+  --main2: #0c2436;
+  --black: #000;
+  --blue: #0000ff;
 }
 
-
-body {
-  background-color: rgb(255, 255, 255);
-  overflow: hidden;
-  font-family: Helvetica, sans-serif;
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
   display: flex;
-  flex-direction: column;
-  align-items: left;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #fff;
 }
 
-/* font default */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: normal; }
-
-
-/* links */
-a {
-  text-decoration: none;
-  color: inherit; 
+.container {
+  max-width: 600px;
+  text-align: left;
 }
 
-nav a.active {
-  text-decoration:underline;
-}
-
-nav a {
-  font-size: 26px;
-  color: var(--main);
-  text-decoration: none;
-  font-weight: normal;
-  position: relative;
-  left: -20%;
-}
-nav a:hover {
-  text-decoration: underline;
-}
-
-
-
-header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: -10px;
-  color: var(--main);
-  position: relative;
-}
-
+/* Main Header */
 h1 {
-  font-size: 32px;
+  font-size: 6rem;
   font-weight: bold;
-  margin: 0;
-  flex-grow: 1
+  color: var(--blue);
+  margin-bottom: 10px;
+}
+
+/* Description Section */
+.description {
+  font-size: 1.2rem;
+  color: var(--blue);
+  margin-bottom: 40px;
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.button {
+  font-size: 1.2rem;
+  text-decoration: underline;
+  color: var(--blue);
+  border: 2px solid var(--blue);
+  padding: 10px 20px;
+  border-radius: 30px; 
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background-color: var(--blue);
+  color: #fff;
 }
 
 
-hr {
-  width: 100%;
-  border: 1px solid var(--main);
-  margin: 0;
+/* NOTESSSS */
+/* Notes Grid Layout */
+.notes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  align-items: start;
 }
 
-.intro {
-  margin-top: -10px;
-  margin-left: 5px;
-  width: 100%;
+/* Individual Note Cards */
+.note {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 8px var(--blue);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.note:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px var(--blue);
+}
+
+.note h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.note p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--blue);
+}
+
+/* Subtle Transitions for an Elegant Feel */
+.note h2, .note p, .back-link, .header h1 {
+  transition: color 0.3s;
+  padding-left: 10vh;
+}
+
+body:hover .note h2, body:hover .note p, body:hover .back-link, body:hover .header h1 {
+  color: var(--blue);
+}
+/* General Layout for Blog-Like Entries */
+.entries-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Individual Entry Styling */
+.entry {
+    border-bottom: 1px solid var(--blue);
+    padding-bottom: 20px;
+    transition: transform 0.2s;
+}
+
+.entry:hover {
+    transform: translateX(5px);
+}
+
+.entry-link {
+    text-decoration: none;
+    color: var(--blue);
+    display: block;
+}
+
+.entry h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.entry-date {
+    font-size: 0.9rem;
+    color: var(--blue)8;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.entry-description {
+    font-size: 1rem;
+    color: var(--blue);
+    line-height: 1.6;
 }
 
 
 
-.center-image {
-  position: absolute; 
-  top: 50%;
-  left: 50%; 
-  transform: translate(-50%, -50%);
-  z-index: 10; 
+/* Note Page Layout */
+.note-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px 20px; /* Extra padding for better alignment */
+  color: var(--blue);
+  line-height: 1.8;
+  background-color: #fff;
 }
 
-#oscillating-image {
-  max-width: 400px; 
-  height: auto;
-}
-
-/* specific project */
-.project-details {
-  margin-top:-20px;
+/* Note Header */
+.note-header {
   text-align: center;
+  margin-bottom: 30px; /* Reduced margin to avoid pushing content */
 }
 
-.project-details h2 {
-  max-width: 800px;
-  color: var(--main2); 
+.note-header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 10px 0; /* Reduced margin for more compact header */
 }
 
-.project-details p {
-  max-width: 800px;
-  color: var(--main2);
+.note-date {
+  font-size: 0.9rem;
+  color: var(--blue);
 }
 
-/* projects */
-
-.social, .design, .programming {
-  text-decoration: underline;
-  color: inherit; 
-}
-
-.projects-section {
-  width: 100%;
-  margin-top: 0px;
-}
-
-.projects-section table {
-  width: 101%;
-  border-collapse: collapse;
-}
-
-.projects-section td {
-  border: 1px solid white;
-  padding: 3px;
-  text-align: left;
-  color: var(--main);
-  padding-left: 50px;
-}
-.projects-section td a:hover{
-  color: var(--main2);
-}
-.projects-section th {
-  background-color: var(--main);
-  padding-left: 40px;
-  text-align: left;
-  font-size:24px;
-  font-weight: normal;
-  color: white;
-}
-
-/* column alignment */
-.projects-section td:nth-child(2), /* TYPE */
-.projects-section th:nth-child(2) {
-    text-align: left; 
-    padding-left: 10%;
-}
-
-.projects-section td:nth-child(3), /* YEAR */
-.projects-section th:nth-child(3) {
-    text-align: right; 
-    padding-right:30px;
-}
-
-/* Horizontal line underneath each row */
-.projects-section tr {
-  position: relative; 
-}
-
-.projects-section tr::after {
-  content: '';
-  position: absolute;
-  bottom: 0px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: var(--main);
-}
-
-.projects-section td a:hover::after {
-  content: '';
-  position: absolute;
-  bottom: -2px; 
-  left: 0;
-  width: 100%;
-  height: 2px; /* Adjust thickness of underline */
-  background-color: var(--main);
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-#typing-text {
-  font-size: 18px;
-  color: var(--main2);
-  padding-left:15px;
-  animation: typing 4s steps(60, end);
-}
-
-
-footer {
-  padding: 10px;
-  color: var(--main2);
-  text-align: right;
-  position: fixed; 
-  bottom: 0; 
-  right: 0; 
-  width: 200px; 
-}
-
-footer p {
-  margin: 0;
-}
-
-footer a {
+/* Back Link Styling */
+.back-link {
+  font-size: 1rem;
   text-decoration: none;
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  border-radius: 30px;
+  padding: 5px 15px;
+  transition: color 0.3s, background-color 0.3s;
+  margin-bottom: 20px; /* Space below link for readability */
 }
 
-footer a:hover {
-  text-decoration: underline;
+.back-link:hover {
+  background-color: var(--blue);
+  color: #fff;
 }
 
+/* Note Content */
+.note-content p {
+  margin-bottom: 25px; /* More spacing between paragraphs */
+  font-size: 1.1rem;
+}
+
+/* Image Styling for Full-Width Look */
+.note-image {
+  width: 100%;
+  height: auto;
+  margin: 30px 0;
+}
+
+figcaption {
+  font-size: 0.9rem;
+  color: var(--blue);
+  text-align: center;
+  margin-top: 5px;
+}
 
