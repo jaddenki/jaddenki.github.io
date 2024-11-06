@@ -50,7 +50,7 @@ h1 {
 
 .button {
   font-size: 1.2rem;
-  text-decoration: underline;
+  text-decoration: none;
   color: var(--blue);
   border: 2px solid var(--blue);
   padding: 10px 20px;
@@ -58,7 +58,8 @@ h1 {
   transition: background-color 0.2s;
 }
 
-.button:hover {
+
+.button:hover, .button.selected {
   background-color: var(--blue);
   color: #fff;
 }
