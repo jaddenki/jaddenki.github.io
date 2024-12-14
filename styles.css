@@ -1,4 +1,3 @@
-/* General Reset */
 :root {
   --main: #9b4f6d;
   --main2: #0c2436;
@@ -15,147 +14,108 @@
 body {
   font-family: Helvetica, Arial, sans-serif;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   min-height: 100vh;
   padding: 20px;
   background-color: #fff;
+  overflow-x: hidden;
 }
 
 .container {
-  max-width: 600px;
-  text-align: left;
+  max-width: 800px;
+  text-align: center;
+  padding: 20px;
 }
 
-/* Main Header */
 h1 {
-  font-size: 6rem;
+  font-size: 4rem;
   font-weight: bold;
   color: var(--blue);
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
-/* Description Section */
 .description {
   font-size: 1.2rem;
   color: var(--blue);
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+  line-height: 1.6;
 }
 
-/* Buttons */
 .buttons {
   display: flex;
-  gap: 20px;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .button {
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-decoration: none;
   color: var(--blue);
   border: 2px solid var(--blue);
-  padding: 10px 20px;
-  border-radius: 30px; 
-  transition: background-color 0.2s;
+  padding: 10px 15px;
+  border-radius: 20px;
+  transition: background-color 0.2s, color 0.2s;
 }
-
 
 .button:hover, .button.selected {
   background-color: var(--blue);
   color: #fff;
 }
 
-
-/* NOTESSSS */
-/* Notes Grid Layout */
-.notes-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 30px;
-  align-items: start;
+.header {
+  width: 100%;
+  text-align: center;
+  margin: 20px 0;
 }
 
-/* Individual Note Cards */
-.note {
-  background-color: #fff;
-  padding: 20px;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 4px 8px var(--blue);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.note:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px var(--blue);
-}
-
-.note h2 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.note p {
-  font-size: 1rem;
-  line-height: 1.6;
+.header h1 {
+  font-size: 2.5rem;
   color: var(--blue);
 }
 
-/* Subtle Transitions for an Elegant Feel */
-.note h2, .note p, .back-link, .header h1 {
-  transition: color 0.3s;
-  padding-left: 10vh;
-}
-
-body:hover .note h2, body:hover .note p, body:hover .back-link, body:hover .header h1 {
-  color: var(--blue);
-}
-/* General Layout for Blog-Like Entries */
 .entries-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  width: 100%;
 }
 
-/* Individual Entry Styling */
 .entry {
-    border-bottom: 1px solid var(--blue);
-    padding-bottom: 20px;
-    transition: transform 0.2s;
+  border-bottom: 2px solid var(--blue);
+  padding: 10px 0;
+  transition: transform 0.3s;
 }
 
 .entry:hover {
-    transform: translateX(5px);
+  transform: translateY(-5px);
 }
 
 .entry-link {
-    text-decoration: none;
-    color: var(--blue);
-    display: block;
+  text-decoration: none;
+  color: var(--blue);
 }
 
 .entry h2 {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin-bottom: 5px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .entry-date {
-    font-size: 0.9rem;
-    color: var(--blue)8;
-    margin-bottom: 10px;
-    display: block;
+  font-size: 0.9rem;
+  color: var(--blue);
+  margin-bottom: 10px;
 }
 
 .entry-description {
-    font-size: 1rem;
-    color: var(--blue);
-    line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--blue);
 }
-
-
 
 /* Note Page Layout */
 .note-container {
@@ -201,17 +161,36 @@ body:hover .note h2, body:hover .note p, body:hover .back-link, body:hover .head
   color: #fff;
 }
 
-/* Note Content */
-.note-content p {
-  margin-bottom: 25px; /* More spacing between paragraphs */
-  font-size: 1.1rem;
+/* Wrapper for images */
+.note-images-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 0 auto;
 }
 
-/* Image Styling for Full-Width Look */
 .note-image {
   width: 100%;
   height: auto;
-  margin: 30px 0;
+  margin: 15px 0;
+  display: block;
+}
+
+/* If the image is wider than tall (horizontal), display side by side */
+.note-image.horizontal {
+  width: 43%; /* Adjust width for two images next to each other */
+  margin: 15px;
+}
+.note-image.vertical {
+  width: 100%;
+  margin-bottom: 20px; /* Space between vertical images */
+}
+
+.note-content p {
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
 figcaption {
@@ -220,4 +199,52 @@ figcaption {
   text-align: center;
   margin-top: 5px;
 }
+
+/* Wrapper for the video to maintain the aspect ratio */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio (height/width * 100) */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+/* iframe styles to fill the wrapper */
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Ensure font scales dynamically */
+body {
+  font-size: calc(16px + 0.2vw); /* Base font size that scales slightly with screen size */
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .entries-container {
+    grid-template-columns: 1fr;
+  }
+
+  .button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  .note-image {
+    width: 100%; /* Stack images on smaller screens */
+  }
+
+}
+
 
