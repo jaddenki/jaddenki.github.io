@@ -23,8 +23,135 @@
                     <img src="https://i.imgur.com/bhl4ceo.jpeg" alt ="" class="note-image horizontal">
                     <img src="https://i.imgur.com/6q73XST.jpeg" alt ="" class="note-image horizontal">
                 </div>
-            <p class="description">BURST ✷ was a showcase of student-made technical creative projects, organized by <a href="https://purduehackers.com">Purdue Hackers</a>, a community of students who collaborate, learn, and build kick-ass technical projects. we were able to get a spot at the patti & rusty rueff galleries for 4 hours on december 08th, 2024, and spent the semester building the brand, marketing the exhibit, and setting the projects up for display.</p>
+            <p class="description">BURST ✷ was a showcase of student-made technical creative projects, organized by <a href="https://purduehackers.com">purdue hackers</a>, a community of students who collaborate, learn, and build kick-ass technical projects. we were able to get a spot at the patti & rusty rueff galleries for 4 hours on december 8th, 2024, and spent the semester building the brand, marketing the exhibit, and setting the projects up for display.</p>
             <p class="description"> amid finals and final projects, i had the chance to contribute to this event by working on designs for the marketing campaign and helping create the base of the interactive star on the <a href="https://burst.purduehackers.com">BURST ✷ webpage</a>.</p>
+            <canvas id="starCanvas"></canvas>
+            <script>
+                const canvas = document.getElementById("starCanvas");
+                const ctx = canvas.getContext("2d");
+
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+
+                const lines = [];
+                const numLines = 8; // Number of lines
+                let lineLength = 100; // Length of each line
+                const starColor = "#0000FF";
+                const pointSize = 3; // Size of each square point
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                const gridSize = 5; // Size of each grid block
+
+                let initialRotationAngle = Math.PI / 4; //
+                let lineThickness = 5;
+                let lineWidth = 3;
+
+                let mouseX = centerX;
+                let mouseY = centerY;
+
+                function createLines() {
+                const angleStep = (Math.PI * 2) / numLines;
+
+                for (let i = 0; i < numLines; i++) {
+                    const angle = i * angleStep + initialRotationAngle;
+
+                    for (let offset = -lineWidth / 2; offset <= lineWidth / 2; offset++) {
+                    const line = [];
+
+                    for (let j = 0; j < lineLength; j += lineThickness) {
+                        const x =
+                        centerX + Math.cos(angle) * j - Math.sin(angle) * offset * gridSize;
+                        const y =
+                        centerY + Math.sin(angle) * j + Math.cos(angle) * offset * gridSize;
+
+                        line.push({
+                        originalX: x,
+                        originalY: y,
+                        x: x,
+                        y: y,
+                        vx: 0,
+                        vy: 0
+                        });
+                    }
+                    lines.push(line);
+                    }
+                }
+                }
+
+                function snapToGrid(value, gridSize) {
+                return Math.round(value / gridSize) * gridSize;
+                }
+
+                function updatePoints() {
+                const angleStep = (Math.PI * 2) / numLines;
+
+                for (let i = 0; i < lines.length; i++) {
+                    const line = lines[i];
+
+                    for (let j = 0; j < line.length; j++) {
+                    const point = line[j];
+                    const dx = point.x - mouseX;
+                    const dy = point.y - mouseY;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    const attractionDistance = 50;
+                    let force = 0;
+                    if (distance < attractionDistance) {
+                        force = (attractionDistance - distance) / attractionDistance;
+                    }
+
+                    const angleToMouse = Math.atan2(dy, dx);
+                    point.vx = (point.vx + Math.cos(angleToMouse) * force * 2) * 0.9;
+                    point.vy = (point.vy + Math.sin(angleToMouse) * force * 2) * 0.9;
+
+                    // Calculate the return force to the target position
+                    const x = point.originalX;
+                    const y = point.originalY;
+                    const returnDx = x - point.x;
+                    const returnDy = y - point.y;
+                    const returnDistance = Math.sqrt(
+                        returnDx * returnDx + returnDy * returnDy
+                    );
+                    const returnForce = Math.min(0.1, returnDistance / 100);
+                    point.x += point.vx + returnDx * returnForce;
+                    point.y += point.vy + returnDy * returnForce;
+                    }
+                }
+                }
+
+                function drawLines() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+                ctx.fillStyle = starColor;
+
+                for (const line of lines) {
+                    for (const point of line) {
+                    // Snap to grid during drawing
+                    const snappedX = snapToGrid(point.x, gridSize);
+                    const snappedY = snapToGrid(point.y, gridSize);
+                    ctx.fillRect(
+                        snappedX - pointSize / 2,
+                        snappedY - pointSize / 2,
+                        pointSize,
+                        pointSize
+                    );
+                    }
+                }
+                }
+
+                canvas.addEventListener("mousemove", (event) => {
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+                });
+
+                function animate() {
+                updatePoints();
+                drawLines();
+                requestAnimationFrame(animate);
+                }
+
+                createLines();
+                animate();
+            </script>
             <p class="description"> i also had the chance to have my own exhibition, displaying a demo version of an indie game i am working on with my friends, <a href="etea.html">ETea</a>.</p>
             <figure>
                 <img src="https://i.imgur.com/EqrRkLm.jpeg" alt ="" class="note-image">
