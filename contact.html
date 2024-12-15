@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+    <div class="container">
+
+       <div style="display: flex; justify-content: center;">
+            <canvas id="canvas"></canvas>
+        </div>
+        <p class="description">hi, i'm jadden picardal. i'm a sophomore in computer engineering @ purdue with a passion for motion design. i enjoy working at the crossroads of engineering and artistic expression-- combined, they reshape how we learn, play, and connect. </p>
+        <p class="description">this is a very informal website that i made for fun (but i am also using it as a portfolio. if you're interested in that, please click on "projects")</p>    
+        <div class="buttons">
+            <a href="projects.html" class="button">projects</a>
+            <a href="notes.html" class="button">notes</a>
+            <a href="inspo.html" class="button">inspo</a>
+            <a href="contact.html" class="button selected">contact</a>
+            <a href="index.html" class="button">clear page</a>
+        </div>
+    </div>
+    <header class="header">
+        <h1>where i am</h1>
+    </header>
+    <div class="entries-container">
+        <div class="entry">
+            <a href=mailto:"jaddenpicardal@gmail.com" class="entry-link">
+                <h2>email</h2>
+                <p class="entry-description">jaddenpicardal@gmail.com</p>
+            </a>
+        </div>
+        <div class="entry">
+            <a href="https://www.linkedin.com/in/jadden-picardal/" class="entry-link">
+                <h2>linkedin</h2>
+            </a>
+        </div>
+
+        <div class="entry">
+            <a href="https://github.com/jaddenki" class="entry-link">
+                <h2>github</h2>
+            </a>
+        </div>
+        <!--
+        <div class="entry">
+            <a href="mindblog/signalis.html" class="entry-link">
+                <h2>thoughts on signalis</h2>
+                <span class="entry-date">apr 25, 2024</span>
+                <p class="entry-description">my favorite game</p>
+            </a>
+        </div>-->
+    </div>
+    <script src="https://unpkg.com/@rive-app/canvas"></script>
+<!--bro--> 
+    <script>
+        const canvas = document.getElementById("canvas");
+        const riveAnimation = new rive.Rive({
+            src: "jajagyatt.riv", 
+            canvas: canvas,
+            autoplay: true,
+            stateMachines: "gyatt", 
+            onLoad: () => {
+                resizeCanvas(); 
+                riveAnimation.resizeDrawingSurfaceToCanvas();
+            },
+        });
+
+        const resizeCanvas = () => {
+            const isMobile = window.innerWidth <= 768;
+            const minSize = 100; 
+            const size = isMobile ? Math.max(100, minSize) : Math.max(200, minSize); 
+
+
+            canvas.width = Math.max(window.innerWidth, minSize); 
+            canvas.height = size; 
+
+            riveAnimation.resizeDrawingSurfaceToCanvas();
+
+            const ctx = canvas.getContext("2d");
+            ctx.clearRect(0, 0, canvas.width, canvas.height); 
+        };
+
+        resizeCanvas();
+
+        window.addEventListener("resize", resizeCanvas);
+    </script>
+
+</body>
+</html>
+
