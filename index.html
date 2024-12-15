@@ -30,30 +30,33 @@
  
     <script>
         const canvas = document.getElementById("canvas");
-        const resizeCanvas = () => {
-            const isMobile = window.innerWidth <= 768;
-            const size = isMobile ? 100 : 300; 
-            canvas.width = size;
-            canvas.height = size;
-        };
-        resizeCanvas();
-        window.addEventListener("resize", () => {
-            resizeCanvas();
-            riveAnimation.resizeDrawingSurfaceToCanvas(); 
-        });        
-
-        resizeCanvas(); 
-        window.addEventListener("resize", resizeCanvas);
-
         const riveAnimation = new rive.Rive({
             src: "jajagyatt.riv", 
             canvas: canvas,
             autoplay: true,
             stateMachines: "gyatt", 
             onLoad: () => {
+                resizeCanvas(); 
                 riveAnimation.resizeDrawingSurfaceToCanvas();
             },
         });
+
+        const resizeCanvas = () => {
+            const isMobile = window.innerWidth <= 768;
+            const size = isMobile ? 100 : 200; 
+            canvas.height = size;
+
+            riveAnimation.resizeDrawingSurfaceToCanvas();
+
+
+            const ctx = canvas.getContext("2d");
+            ctx.clearRect(0, 0, canvas.width, canvas.height); 
+        };
+
+        resizeCanvas();
+
+        window.addEventListener("resize", resizeCanvas);
+
     </script>
 
 </body>
