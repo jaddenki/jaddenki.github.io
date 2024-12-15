@@ -10,6 +10,9 @@
 <body>
     <div class="container">
         <h1>mindbarf*</h1>
+       <div style="display: flex; justify-content: center;">
+            <canvas id="canvas"></canvas>
+        </div>
         <p class="description">hi, i'm jadden picardal. i'm a sophomore in computer engineering @ purdue with a passion for motion design. i enjoy working at the crossroads of engineering and artistic expression-- combined, they reshape how we learn, play, and connect. </p>
         <p class="description">i want to bring innovative ideas to life and contribute to initiatives that leave an impact.</p>
         <p class="description">this is a very informal website that i made for fun (but i am also using it as a portfolio. if you're interested in that, please click on "projects")</p>    
@@ -47,6 +50,30 @@
             </a>
         </div>-->
     </div>
+    <script src="https://unpkg.com/@rive-app/canvas"></script>
+ 
+    <script>
+        const canvas = document.getElementById("canvas");
+
+        // Set canvas size based on container
+        const resizeCanvas = () => {
+            canvas.width = window.innerWidth > 768 ? 500 : 300;
+            canvas.height = canvas.width;
+        };
+
+        resizeCanvas(); // Initial size
+        window.addEventListener("resize", resizeCanvas); // Resize on window change
+
+        const riveAnimation = new rive.Rive({
+            src: "jajagyatt.riv", // Ensure this path is correct
+            canvas: canvas,
+            autoplay: true,
+            stateMachines: "gyatt", // Replace with your actual state machine name
+            onLoad: () => {
+                riveAnimation.resizeDrawingSurfaceToCanvas();
+            },
+        });
+    </script>
 </body>
 </html>
 
