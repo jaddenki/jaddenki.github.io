@@ -251,6 +251,15 @@ body {
   .note-image {
     width: 100%; /* Stack images on smaller screens */
   }
+  .note-image.horizontal {
+    width: 100%; /* Make the images take up full width */
+    margin: 10px 0; /* Reduce margin for better spacing */
+  }
+  .note-images-wrapper {
+    display: flex;
+    flex-direction: column; /* Stack images vertically */
+    align-items: center; /* Center the images */
+  }
 
 }
 
