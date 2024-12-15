@@ -27,130 +27,142 @@
             <p class="description"> amid finals and final projects, i had the chance to contribute to this event by working on designs for the marketing campaign and helping create the base of the interactive star on the <a href="https://burst.purduehackers.com">BURST ✷ webpage</a>.</p>
             <canvas id="starCanvas"></canvas>
             <script>
-                const canvas = document.getElementById("starCanvas");
-                const ctx = canvas.getContext("2d");
+                    const canvas = document.getElementById("starCanvas");
+                    const ctx = canvas.getContext("2d");
 
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-
-                const lines = [];
-                const numLines = 8; // Number of lines
-                let lineLength = 100; // Length of each line
-                const starColor = "#0000FF";
-                const pointSize = 3; // Size of each square point
-                const centerX = canvas.width / 2;
-                const centerY = canvas.height / 2;
-                const gridSize = 5; // Size of each grid block
-
-                let initialRotationAngle = Math.PI / 4; //
-                let lineThickness = 5;
-                let lineWidth = 3;
-
-                let mouseX = centerX;
-                let mouseY = centerY;
-
-                function createLines() {
-                const angleStep = (Math.PI * 2) / numLines;
-
-                for (let i = 0; i < numLines; i++) {
-                    const angle = i * angleStep + initialRotationAngle;
-
-                    for (let offset = -lineWidth / 2; offset <= lineWidth / 2; offset++) {
-                    const line = [];
-
-                    for (let j = 0; j < lineLength; j += lineThickness) {
-                        const x =
-                        centerX + Math.cos(angle) * j - Math.sin(angle) * offset * gridSize;
-                        const y =
-                        centerY + Math.sin(angle) * j + Math.cos(angle) * offset * gridSize;
-
-                        line.push({
-                        originalX: x,
-                        originalY: y,
-                        x: x,
-                        y: y,
-                        vx: 0,
-                        vy: 0
-                        });
-                    }
-                    lines.push(line);
-                    }
-                }
-                }
-
-                function snapToGrid(value, gridSize) {
-                return Math.round(value / gridSize) * gridSize;
-                }
-
-                function updatePoints() {
-                const angleStep = (Math.PI * 2) / numLines;
-
-                for (let i = 0; i < lines.length; i++) {
-                    const line = lines[i];
-
-                    for (let j = 0; j < line.length; j++) {
-                    const point = line[j];
-                    const dx = point.x - mouseX;
-                    const dy = point.y - mouseY;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    const attractionDistance = 50;
-                    let force = 0;
-                    if (distance < attractionDistance) {
-                        force = (attractionDistance - distance) / attractionDistance;
+                    function resizeCanvas() {
+                    canvas.width = canvas.offsetWidth;
+                    canvas.height = canvas.offsetHeight;
                     }
 
-                    const angleToMouse = Math.atan2(dy, dx);
-                    point.vx = (point.vx + Math.cos(angleToMouse) * force * 2) * 0.9;
-                    point.vy = (point.vy + Math.sin(angleToMouse) * force * 2) * 0.9;
+                    window.addEventListener("resize", resizeCanvas);
+                    resizeCanvas();
 
-                    // Calculate the return force to the target position
-                    const x = point.originalX;
-                    const y = point.originalY;
-                    const returnDx = x - point.x;
-                    const returnDy = y - point.y;
-                    const returnDistance = Math.sqrt(
-                        returnDx * returnDx + returnDy * returnDy
-                    );
-                    const returnForce = Math.min(0.1, returnDistance / 100);
-                    point.x += point.vx + returnDx * returnForce;
-                    point.y += point.vy + returnDy * returnForce;
+                    const lines = [];
+                    const numLines = 8; // Number of lines
+                    let lineLength = 100; // Length of each line
+                    const starColor = "#0000FF";
+                    const pointSize = 3; // Size of each square point
+                    const gridSize = 5; // Size of each grid block
+                    const lineWidth = 3;
+
+                    let initialRotationAngle = Math.PI / 4; // Initial rotation angle
+                    let lineThickness = 5;
+
+                    // Mouse position for interactivity
+                    let mouseX = canvas.width / 2;
+                    let mouseY = canvas.height / 2;
+
+                    // Create lines for the star
+                    function createLines() {
+                    lines.length = 0; // Clear existing lines
+                    const centerX = canvas.width / 2;
+                    const centerY = canvas.height / 2;
+                    const angleStep = (Math.PI * 2) / numLines;
+
+                    for (let i = 0; i < numLines; i++) {
+                        const angle = i * angleStep + initialRotationAngle;
+
+                        for (let offset = -lineWidth / 2; offset <= lineWidth / 2; offset++) {
+                        const line = [];
+                        for (let j = 0; j < lineLength; j += lineThickness) {
+                            const x = centerX + Math.cos(angle) * j - Math.sin(angle) * offset * gridSize;
+                            const y = centerY + Math.sin(angle) * j + Math.cos(angle) * offset * gridSize;
+
+                            line.push({
+                            originalX: x,
+                            originalY: y,
+                            x: x,
+                            y: y,
+                            vx: 0,
+                            vy: 0,
+                            });
+                        }
+                        lines.push(line);
+                        }
                     }
-                }
-                }
-
-                function drawLines() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
-                ctx.fillStyle = starColor;
-
-                for (const line of lines) {
-                    for (const point of line) {
-                    // Snap to grid during drawing
-                    const snappedX = snapToGrid(point.x, gridSize);
-                    const snappedY = snapToGrid(point.y, gridSize);
-                    ctx.fillRect(
-                        snappedX - pointSize / 2,
-                        snappedY - pointSize / 2,
-                        pointSize,
-                        pointSize
-                    );
                     }
-                }
-                }
 
-                canvas.addEventListener("mousemove", (event) => {
-                mouseX = event.clientX;
-                mouseY = event.clientY;
-                });
+                    // Snap points to the grid
+                    function snapToGrid(value, gridSize) {
+                    return Math.round(value / gridSize) * gridSize;
+                    }
 
-                function animate() {
-                updatePoints();
-                drawLines();
-                requestAnimationFrame(animate);
-                }
+                    // Update points for interactivity
+                    function updatePoints() {
+                    const centerX = canvas.width / 2;
+                    const centerY = canvas.height / 2;
 
-                createLines();
-                animate();
+                    for (const line of lines) {
+                        for (const point of line) {
+                        const dx = point.x - mouseX;
+                        const dy = point.y - mouseY;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        const attractionDistance = 50;
+                        let force = 0;
+                        if (distance < attractionDistance) {
+                            force = (attractionDistance - distance) / attractionDistance;
+                        }
+
+                        const angleToMouse = Math.atan2(dy, dx);
+                        point.vx = (point.vx + Math.cos(angleToMouse) * force * 2) * 0.9;
+                        point.vy = (point.vy + Math.sin(angleToMouse) * force * 2) * 0.9;
+
+                        // Return to original position
+                        const returnDx = point.originalX - point.x;
+                        const returnDy = point.originalY - point.y;
+                        const returnDistance = Math.sqrt(returnDx * returnDx + returnDy * returnDy);
+                        const returnForce = Math.min(0.1, returnDistance / 100);
+                        point.x += point.vx + returnDx * returnForce;
+                        point.y += point.vy + returnDy * returnForce;
+                        }
+                    }
+                    }
+
+                    // Draw the lines of the star
+                    function drawLines() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+                    ctx.fillStyle = starColor;
+
+                    for (const line of lines) {
+                        for (const point of line) {
+                        const snappedX = snapToGrid(point.x, gridSize);
+                        const snappedY = snapToGrid(point.y, gridSize);
+                        ctx.fillRect(
+                            snappedX - pointSize / 2,
+                            snappedY - pointSize / 2,
+                            pointSize,
+                            pointSize
+                        );
+                        }
+                    }
+                    }
+
+                    // Update mouse position on move
+                    canvas.addEventListener("mousemove", (event) => {
+                    const rect = canvas.getBoundingClientRect();
+                    mouseX = event.clientX - rect.left;
+                    mouseY = event.clientY - rect.top;
+                    });
+
+                    // Animation loop
+                    function animate() {
+                    updatePoints();
+                    drawLines();
+                    requestAnimationFrame(animate);
+                    }
+
+                    // Initialize and animate
+                    createLines();
+                    animate();
+
+                    // Recreate lines on resize
+                    window.addEventListener("resize", () => {
+                    resizeCanvas();
+                    createLines();
+                    });
+
             </script>
             <p class="description"> i also had the chance to have my own exhibition, displaying a demo version of an indie game i am working on with my friends, <a href="etea.html">ETea</a>.</p>
             <figure>
@@ -168,6 +180,23 @@
             </figure>
             <p class="description">i serve as the head of socials for Purdue Hackers, so i led a marketing campaign on the instagram account, essentially having a "BURST ✷ TAKEOVER", showcasing all of the projects in a pixel style in order to generate hype without ruining the surprise of the projects.</p>
             
+            <h2> initial branding exploration </h2>
+            <div class="video-wrapper">
+                <video controls autoplay loop muted>
+                    <source src="img/video/burst.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <p class="description">we initially were going to make the main color blue, but opted for a strong red, heavily inspired by the the <span style="color:#ff4f00">international orange color (#ff4f00) </span> to set apart BURST ✷ from everything else.</p>
+            <p class="description">i'm personally a big fan of the red. we went a bit crazy on the poster campaign, and it really stood out.</p>
+
+            <figure>
+                <div class="note-images-wrapper">
+                    <img src="https://i.imgur.com/DDTT8nE.jpeg" alt ="" class="note-image horizontal">
+                    <img src="https://i.imgur.com/0ipYy9x.jpeg" alt ="" class="note-image horizontal">
+                </div>
+                <figcaption>BURST ✷ Posters</figcaption>
+            </figure>
             <!--
             <p class="description">there are also two variations, a rounded, kind outline style with a softer, more approchable vibe to convey warmth and inclusivity, and a sleek, minimal outline style designed for a modern and sophisticated look. this emphasizes precision and clarity, making ideal for use professionally.</p>
             <p class="description">so... how did i even come up with this? let's delve into the process... which started by 2 am doodles with a good friend.</p>

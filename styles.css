@@ -18,6 +18,12 @@
   max-width: 100%;
   height: auto; 
 }
+
+canvas {
+  display: block;
+  width: 100%; /* Adjust to container width */
+  height: 300px; /* Set a default height for responsiveness */
+}
 body {
   font-family: Helvetica, Arial, sans-serif;
   display: flex;
@@ -184,14 +190,12 @@ h1 {
   display: block;
 }
 
-/* If the image is wider than tall (horizontal), display side by side */
 .note-image.horizontal {
-  width: 43%; /* Adjust width for two images next to each other */
-  margin: 15px;
+  width: 43%; 
 }
 .note-image.vertical {
   width: 100%;
-  margin-bottom: 20px; /* Space between vertical images */
+  margin-bottom: 20px; 
 }
 
 .note-content p {
