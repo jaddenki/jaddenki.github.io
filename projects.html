@@ -66,26 +66,32 @@
  
     <script>
         const canvas = document.getElementById("canvas");
-
-        // Set canvas size based on container
         const resizeCanvas = () => {
-            canvas.width = window.innerWidth > 768 ? 500 : 300;
-            canvas.height = canvas.width;
+            const isMobile = window.innerWidth <= 768;
+            const size = isMobile ? 100 : 300; 
+            canvas.width = size;
+            canvas.height = size;
         };
+        resizeCanvas();
+        window.addEventListener("resize", () => {
+            resizeCanvas();
+            riveAnimation.resizeDrawingSurfaceToCanvas(); 
+        });        
 
-        resizeCanvas(); // Initial size
-        window.addEventListener("resize", resizeCanvas); // Resize on window change
+        resizeCanvas(); 
+        window.addEventListener("resize", resizeCanvas);
 
         const riveAnimation = new rive.Rive({
-            src: "jajagyatt.riv", // Ensure this path is correct
+            src: "jajagyatt.riv", 
             canvas: canvas,
             autoplay: true,
-            stateMachines: "gyatt", // Replace with your actual state machine name
+            stateMachines: "gyatt", 
             onLoad: () => {
                 riveAnimation.resizeDrawingSurfaceToCanvas();
             },
         });
     </script>
+    
 </body>
 </html>
 
