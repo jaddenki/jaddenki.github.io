@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jadden picardal</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="img/favi/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="img/favi/favicon.ico">
 </head>
 <body>
     <div class="container">
@@ -45,8 +45,8 @@
 
         const resizeCanvas = () => {
             const isMobile = window.innerWidth <= 768;
-            const minSize = 100; 
-            const size = isMobile ? Math.max(100, minSize) : Math.max(200, minSize); 
+            const minSize = 200; 
+            const size = isMobile ? 100 : 200; 
 
 
             canvas.width = Math.max(window.innerWidth, minSize); 
