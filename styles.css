@@ -5,6 +5,29 @@
   --blue: #0000ff;
 }
 
+
+body {
+    scrollbar-color: #0000ff #f0f0f0; 
+    scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #0000ff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #000000;
+}
+
+
 * {
   margin: 0;
   padding: 0;
