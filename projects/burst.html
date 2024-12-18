@@ -28,131 +28,131 @@
             <p class="description"> amid finals and final projects, i had the chance to contribute to this event by working on designs for the marketing campaign and helping create the base of the interactive star on the <a href="https://burst.purduehackers.com" target="_blank">BURST ✷ webpage</a>.</p>
             <canvas id="starCanvas"></canvas>
             <script>
-                    const canvas = document.getElementById("starCanvas");
-                    const ctx = canvas.getContext("2d");
+  const canvas = document.getElementById("starCanvas");
+const ctx = canvas.getContext("2d");
 
-                    function resizeCanvas() {
-                    canvas.width = canvas.offsetWidth;
-                    canvas.height = canvas.offsetHeight;
-                    }
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-                    window.addEventListener("resize", resizeCanvas);
-                    resizeCanvas();
+const lines = [];
+const numLines = 8; 
+let lineLength = 100; 
+const starColor = "#0000FF";
+const pointSize = 3; 
+const centerX = canvas.width / 2;
+const centerY = canvas.height / 2;
+const gridSize = 5; 
 
-                    const lines = [];
-                    let lineLength = 100; 
-                    const numLines = 8; 
-                    const starColor = "#0000FF";
-                    const pointSize = 3; 
-                    const gridSize = 5; 
-                    const lineWidth = 3;
+let initialRotationAngle = Math.PI / 4; //
+let lineThickness = 5;
+let lineWidth = 3;
 
-                    let initialRotationAngle = Math.PI / 4; 
-                    let lineThickness = 5;
+let mouseX = centerX;
+let mouseY = centerY;
 
-                    let mouseX = canvas.width / 2;
-                    let mouseY = canvas.height / 2;
+function createLines() {
+  const angleStep = (Math.PI * 2) / numLines;
 
-                    function createLines() {
-                    lines.length = 0; 
-                    const centerX = canvas.width / 2;
-                    const centerY = canvas.height / 2;
-                    const angleStep = (Math.PI * 2) / numLines;
+  for (let i = 0; i < numLines; i++) {
+    const angle = i * angleStep + initialRotationAngle;
 
-                    for (let i = 0; i < numLines; i++) {
-                        const angle = i * angleStep + initialRotationAngle;
+    for (let offset = -lineWidth / 2; offset <= lineWidth / 2; offset++) {
+      const line = [];
 
-                        for (let offset = -lineWidth / 2; offset <= lineWidth / 2; offset++) {
-                        const line = [];
-                        for (let j = 0; j < lineLength; j += lineThickness) {
-                            const x = centerX + Math.cos(angle) * j - Math.sin(angle) * offset * gridSize;
-                            const y = centerY + Math.sin(angle) * j + Math.cos(angle) * offset * gridSize;
+      for (let j = 0; j < lineLength; j += lineThickness) {
+        const x =
+          centerX + Math.cos(angle) * j - Math.sin(angle) * offset * gridSize;
+        const y =
+          centerY + Math.sin(angle) * j + Math.cos(angle) * offset * gridSize;
 
-                            line.push({
-                            originalX: x,
-                            originalY: y,
-                            x: x,
-                            y: y,
-                            vx: 0,
-                            vy: 0,
-                            });
-                        }
-                        lines.push(line);
-                        }
-                    }
-                    }
+        line.push({
+          originalX: x,
+          originalY: y,
+          x: x,
+          y: y,
+          vx: 0,
+          vy: 0
+        });
+      }
+      lines.push(line);
+    }
+  }
+}
 
-                    function snapToGrid(value, gridSize) {
-                    return Math.round(value / gridSize) * gridSize;
-                    }
+function snapToGrid(value, gridSize) {
+  return Math.round(value / gridSize) * gridSize;
+}
 
-                    function updatePoints() {
-                    const centerX = canvas.width / 2;
-                    const centerY = canvas.height / 2;
+function updatePoints() {
+  const angleStep = (Math.PI * 2) / numLines;
 
-                    for (const line of lines) {
-                        for (const point of line) {
-                        const dx = point.x - mouseX;
-                        const dy = point.y - mouseY;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
 
-                        const attractionDistance = 50;
-                        let force = 0;
-                        if (distance < attractionDistance) {
-                            force = (attractionDistance - distance) / attractionDistance;
-                        }
+    for (let j = 0; j < line.length; j++) {
+      const point = line[j];
+      const dx = point.x - mouseX;
+      const dy = point.y - mouseY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
 
-                        const angleToMouse = Math.atan2(dy, dx);
-                        point.vx = (point.vx + Math.cos(angleToMouse) * force * 2) * 0.9;
-                        point.vy = (point.vy + Math.sin(angleToMouse) * force * 2) * 0.9;
+      const attractionDistance = 50;
+      let force = 0;
+      if (distance < attractionDistance) {
+        force = (attractionDistance - distance) / attractionDistance;
+      }
 
-                        const returnDx = point.originalX - point.x;
-                        const returnDy = point.originalY - point.y;
-                        const returnDistance = Math.sqrt(returnDx * returnDx + returnDy * returnDy);
-                        const returnForce = Math.min(0.1, returnDistance / 100);
-                        point.x += point.vx + returnDx * returnForce;
-                        point.y += point.vy + returnDy * returnForce;
-                        }
-                    }
-                    }
+      const angleToMouse = Math.atan2(dy, dx);
+      point.vx = (point.vx + Math.cos(angleToMouse) * force * 2) * 0.9;
+      point.vy = (point.vy + Math.sin(angleToMouse) * force * 2) * 0.9;
 
-                    function drawLines() {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
-                    ctx.fillStyle = starColor;
+      
+      const x = point.originalX;
+      const y = point.originalY;
+      const returnDx = x - point.x;
+      const returnDy = y - point.y;
+      const returnDistance = Math.sqrt(
+        returnDx * returnDx + returnDy * returnDy
+      );
+      const returnForce = Math.min(0.1, returnDistance / 100);
+      point.x += point.vx + returnDx * returnForce;
+      point.y += point.vy + returnDy * returnForce;
+    }
+  }
+}
 
-                    for (const line of lines) {
-                        for (const point of line) {
-                        const snappedX = snapToGrid(point.x, gridSize);
-                        const snappedY = snapToGrid(point.y, gridSize);
-                        ctx.fillRect(
-                            snappedX - pointSize / 2,
-                            snappedY - pointSize / 2,
-                            pointSize,
-                            pointSize
-                        );
-                        }
-                    }
-                    }
+function drawLines() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+  ctx.fillStyle = starColor;
 
-                    canvas.addEventListener("mousemove", (event) => {
-                    const rect = canvas.getBoundingClientRect();
-                    mouseX = event.clientX - rect.left;
-                    mouseY = event.clientY - rect.top;
-                    });
+  for (const line of lines) {
+    for (const point of line) {
+      
+      const snappedX = snapToGrid(point.x, gridSize);
+      const snappedY = snapToGrid(point.y, gridSize);
+      ctx.fillRect(
+        snappedX - pointSize / 2,
+        snappedY - pointSize / 2,
+        pointSize,
+        pointSize
+      );
+    }
+  }
+}
 
-                    function animate() {
-                    updatePoints();
-                    drawLines();
-                    requestAnimationFrame(animate);
-                    }
+canvas.addEventListener("mousemove", (event) => {
+  mouseX = event.clientX;
+  mouseY = event.clientY;
+});
 
-                    createLines();
-                    animate();
+function animate() {
+  updatePoints();
+  drawLines();
+  requestAnimationFrame(animate);
+}
 
-                    window.addEventListener("resize", () => {
-                    resizeCanvas();
-                    createLines();
-                    });
+createLines();
+animate();
+              
 
             </script>
             <p class="description"> i also had the chance to have my own exhibition, displaying a demo version of an indie game i am working on with my friends, <a href="etea.html" target="_blank">ETea</a>.</p>
