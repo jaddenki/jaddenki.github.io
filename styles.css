@@ -1,6 +1,4 @@
 :root {
-  --main: #9b4f6d;
-  --main2: #0c2436;
   --black: #000;
   --blue: #0000ff;
 }
@@ -51,9 +49,11 @@ canvas {
   width: 100%; 
   height: 500px; 
 }
-
+h1, h2, p, .button {
+  font-family: 'DM Sans', sans-serif;
+}
 body {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'DM Sans', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -283,16 +283,16 @@ body {
     font-size: 0.9rem;
   }
   .note-image {
-    width: 100%; /* Stack images on smaller screens */
+    width: 100%;
   }
   .note-image.horizontal {
-    width: 100%; /* Make the images take up full width */
-    margin: 10px 0; /* Reduce margin for better spacing */
+    width: 100%; 
+    margin: 10px 0; 
   }
   .note-images-wrapper {
     display: flex;
-    flex-direction: column; /* Stack images vertically */
-    align-items: center; /* Center the images */
+    flex-direction: column;
+    align-items: center; 
   }
 
 }
