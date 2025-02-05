@@ -25,6 +25,25 @@ body {
     background-color: #000000;
 }
 
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #0000ff #f0f0f0;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    scrollbar-color: #000000 #f0f0f0;
+}
+
+
+::-moz-selection {
+  color: white;
+  background: var(--blue);
+}
+
+::selection {
+  color: white;
+  background: var(--blue);
+}
 
 * {
   margin: 0;
@@ -98,7 +117,6 @@ h1 {
   border: 2px solid var(--blue);
   padding: 10px 15px;
   border-radius: 20px;
-  transition: background-color 0.2s, color 0.2s;
 }
 
 .button:hover, .button.selected {
