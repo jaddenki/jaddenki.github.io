@@ -1,6 +1,8 @@
 :root {
   --black: #000;
   --blue: #0000ff;
+  --yellow: #ffff00;
+  
 }
 
 
@@ -14,35 +16,35 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #f0f0f0;
+    background-color: white;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #0000ff;
+    background-color: blue;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #000000;
+    background-color: black;
 }
 
 * {
-    scrollbar-width: thin;
-    scrollbar-color: #0000ff #f0f0f0;
+    scrollbar-width: thick;
+    scrollbar-color:  var(--blue) white;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-    scrollbar-color: #000000 #f0f0f0;
+    scrollbar-color: var(--black) white;
 }
 
 
 ::-moz-selection {
-  color: white;
-  background: var(--blue);
+  color: red;
+  background: var(--yellow);
 }
 
 ::selection {
-  color: white;
-  background: var(--blue);
+  color: red;
+  background: var(--yellow);
 }
 
 * {
