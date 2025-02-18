@@ -259,18 +259,22 @@ figcaption {
 .video-wrapper {
   position: relative;
   width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  max-width: 100%;
+}
+
+
+
+.video-wrappergyatt {
+  position: relative;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-bottom: 0; /* Remove the padding-bottom that was used for aspect ratio */
 }
 
-#burstVideo {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  margin-bottom: 40px;
-}
 .video-wrapper iframe {
   position: absolute;
   top: 0;
@@ -279,6 +283,12 @@ figcaption {
   height: 100%;
 }
 
+    #burstVideo {
+        width: 100%;
+        max-width: 400px; 
+        height: auto;
+        margin-bottom: 40px;
+    }
 body {
   font-size: calc(16px + 0.2vw);
 }
