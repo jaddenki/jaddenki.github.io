@@ -1,0 +1,32 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+---
+
+<PageLayout title="Motion" description="Motion graphics portfolio">
+  <Container>
+    <div class="space-y-10">
+      <h1 class="animate font-semibold text-black dark:text-white">
+        Motion Graphics
+      </h1>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="space-y-4">
+          <video controls class="w-full rounded-lg">
+            <source src="/videos/motion-1.mp4" type="video/mp4">
+          </video>
+          <p class="text-sm">Project description here</p>
+        </div>
+
+        <div class="space-y-4">
+          <img 
+            src="/img/motion-2.gif" 
+            alt="Motion graphic" 
+            class="w-full rounded-lg"
+          />
+          <p class="text-sm">Project description here</p>
+        </div>
+      </div>
+    </div>
+  </Container>
+</PageLayout>

@@ -18,8 +18,8 @@ export const BLOG: Metadata = {
   DESCRIPTION: "what i'm passionate about",
 };
 
-export const WORK: Metadata = {
-  TITLE: "match",
+export const MATCHA: Metadata = {
+  TITLE: "matcha",
   DESCRIPTION: "what i have done and what i am doing",
 };
 
