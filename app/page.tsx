@@ -137,11 +137,11 @@ export default function Personal() {
       >
         <div className="flex-1">
           <p className="mb-5 text-zinc-600 dark:text-zinc-400">
-          i'm a second year studying computer engineering <a className="underline dark:text-zinc-300" href="https://purdue.edu">purdue university</a> with an interest in software & visual computing.
+          i'm a second year studying computer engineering at <a className="underline dark:text-zinc-300" href="https://purdue.edu">purdue university</a> with an interest in software & visual computing.
             i enjoy working at the crossroads of engineering and artistic expression-- combined, they reshape how we learn, play, and connect.
           </p>
           <p className="mb-5 text-zinc-600 dark:text-zinc-400">
-             currently pushing purdue's culture of creative tinkering as the head of communications at <a className="underline dark:text-zinc-300" href="https://www.purduehackers.com">purdue hackers</a> and showing off cool high altitude sounding rocket parts as the media manager of <a className="underline dark:text-zinc-300" href="https://join.fivedyna.space">five dynamics</a>. </p>
+             currently pushing purdue's culture of creative tinkering as the head of communications at <a className="underline dark:text-zinc-300" href="https://www.purduehackers.com" target="_blank">purdue hackers</a> and showing off cool high altitude sounding rocket parts as the media manager of <a className="underline dark:text-zinc-300" href="https://join.fivedyna.space" target="blank">five dynamics</a>. </p>
         <p className="mb-5 text-zinc-600 dark:text-zinc-400">
           feel free to contact me at{' '}
           <a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>
