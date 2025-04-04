@@ -1,6 +1,8 @@
 {
   "name": "nim",
   "version": "0.1.0",
+  "homepage": "https://jaddenki.github.io",
+  "description": "Jadden Picardal's personal website template built with Next.js and Tailwind CSS.",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -32,6 +34,7 @@
     "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "15.1.1",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.5.3",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.10",

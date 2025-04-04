@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono, DM_Sans } from 'next/font/google'
 import './globals.css'
-import localFont from 'next/font/local'
 import { Header } from './header'
 import { Footer } from './footer'
 import { ThemeProvider } from 'next-themes'
@@ -18,10 +17,6 @@ export const metadata: Metadata = {
     'Jadden Picardal\'s personal website',
 }
 
-const polysans = localFont({
-  src: '../public/fonts/Polysans.ttf',
-  variable: '--font-polysans',
-})
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',

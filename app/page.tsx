@@ -141,7 +141,7 @@ export default function Personal() {
             i enjoy working at the crossroads of engineering and artistic expression-- combined, they reshape how we learn, play, and connect.
           </p>
           <p className="mb-5 text-zinc-600 dark:text-zinc-400">
-             currently showing off purdue's culture of creative tinkering as the head of communications at <a className="underline dark:text-zinc-300" href="https://www.purduehackers.com">purdue hackers</a> and cool high altitude sounding rocket parts as the media manager of <a className="underline dark:text-zinc-300" href="https://join.fivedyna.space">five dynamics</a>. </p>
+             currently pushing purdue's culture of creative tinkering as the head of communications at <a className="underline dark:text-zinc-300" href="https://www.purduehackers.com">purdue hackers</a> and showing off cool high altitude sounding rocket parts as the media manager of <a className="underline dark:text-zinc-300" href="https://join.fivedyna.space">five dynamics</a>. </p>
         <p className="mb-5 text-zinc-600 dark:text-zinc-400">
           feel free to contact me at{' '}
           <a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>
