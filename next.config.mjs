@@ -18,7 +18,6 @@ const withMDX = createMDX({
 });
 
 
-export default withMDX({
-  ...nextConfig,
-  distDir: 'out',
-});
+export default withMDX(
+  ...nextConfig
+);
