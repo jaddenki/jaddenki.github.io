@@ -1,4 +1,5 @@
 'use client'
+import { i } from 'motion/react-client'
 import { useEffect, useRef } from 'react'
 
 export function StarCanvas() {
@@ -27,8 +28,8 @@ export function StarCanvas() {
     }
 
     // State
-    let mouseX = canvas.width / 2
-    let mouseY = canvas.height / 2
+    let mouseX = 0
+    let mouseY = 0
     const lines: Array<Array<Point>> = []
 
     // Types
@@ -41,14 +42,16 @@ export function StarCanvas() {
       originalY: number
     }
 
-    // Canvas sizing
+    // Canvas sizing with null check
     function resizeCanvas() {
+      if (!canvas) return
       canvas.width = canvas.offsetWidth
       canvas.height = canvas.offsetHeight
     }
 
     // Create star points
     function createLines() {
+      if (!canvas) return
       lines.length = 0
       const centerX = canvas.width / 2
       const centerY = canvas.height / 2
@@ -120,8 +123,9 @@ export function StarCanvas() {
       point.vy *= config.dampening
     }
 
-    // Draw the star
+    // Draw the star with null checks
     function drawLines() {
+      if (!ctx || !canvas) return
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       ctx.fillStyle = config.starColor
 
@@ -146,13 +150,15 @@ export function StarCanvas() {
       requestAnimationFrame(animate)
     }
 
-    // Event listeners
+    // Event listener with null check
     function handleMouseMove(event: MouseEvent) {
+      if (!canvas) return
       const rect = canvas.getBoundingClientRect()
       mouseX = event.clientX - rect.left
       mouseY = event.clientY - rect.top
     }
 
+    // Safe event listener attachment
     canvas.addEventListener("mousemove", handleMouseMove)
 
     // Initialize
@@ -160,16 +166,19 @@ export function StarCanvas() {
     createLines()
     animate()
 
-    // Handle window resize
-    window.addEventListener("resize", () => {
+    // Handle window resize with safe cleanup
+    const handleResize = () => {
       resizeCanvas()
       createLines()
-    })
+    }
+    window.addEventListener("resize", handleResize)
 
-    // Cleanup
+    // Cleanup with null check
     return () => {
-      window.removeEventListener("resize", resizeCanvas)
-      canvas.removeEventListener("mousemove", handleMouseMove)
+      window.removeEventListener("resize", handleResize)
+      if (canvas) {
+        canvas.removeEventListener("mousemove", handleMouseMove)
+      }
     }
   }, [])
 
