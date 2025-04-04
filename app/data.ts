@@ -61,7 +61,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: 'ETea',
-    description: 'A video game about an alien bobarista. Made with Unity',
+    description: 'A video game about an alien bobarista. Made with Unity.',
     link: '/projects/ETea',
     video:
       'https://res.cloudinary.com/dghjime6m/video/upload/v1743719918/ETea_-_Reveal_Teaser_1080_ihqygh.mp4',
