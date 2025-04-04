@@ -10,8 +10,7 @@ const withMDX = createMDX({
   extension: /\.mdx?$/,
 });
 
-export default withMDX(nextConfig);
-
-module.exports = {
+export default withMDX({
+  ...nextConfig,
   distDir: 'out',
-}
+});
