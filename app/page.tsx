@@ -141,7 +141,7 @@ export default function Personal() {
             i enjoy working at the crossroads of engineering and artistic expression-- combined, they reshape how we learn, play, and connect.
           </p>
           <p className="mb-5 text-zinc-600 dark:text-zinc-400">
-             </p>
+             currently showing off purdue's culture of creative tinkering as the head of communications at <a className="underline dark:text-zinc-300" href="https://www.purduehackers.com">purdue hackers</a> and cool high altitude sounding rocket parts as the media manager of <a className="underline dark:text-zinc-300" href="https://join.fivedyna.space">five dynamics</a>. </p>
         <p className="mb-5 text-zinc-600 dark:text-zinc-400">
           feel free to contact me at{' '}
           <a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>
@@ -161,7 +161,7 @@ export default function Personal() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">Selected Projects</h3>
+        <h3 className="mb-5 text-lg font-medium">What I make</h3>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {PROJECTS.map((project) => (
             <div key={project.name} className="space-y-2">
@@ -185,11 +185,11 @@ export default function Personal() {
         </div>
       </motion.section>
 
-      {/* <motion.section
+      <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
+        <h3 className="mb-5 text-lg font-medium">Where I have worked</h3>
         <div className="flex flex-col space-y-2">
           {WORK_EXPERIENCE.map((job) => (
             <a
@@ -221,7 +221,7 @@ export default function Personal() {
             </a>
           ))}
         </div>
-      </motion.section> */}
+      </motion.section>
 
       {/* <motion.section
         variants={VARIANTS_SECTION}

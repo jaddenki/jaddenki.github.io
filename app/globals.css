@@ -64,9 +64,9 @@
 
   .lavender {
     --background: #ffffff;
-    --foreground: #581C87;
-    --secondary: #6B21A8;
-    --accent: #7E22CE;
+    --foreground: #0000ff;
+    --secondary: #0000ff;
+    --accent: #0000ff;
   }
 
   * {

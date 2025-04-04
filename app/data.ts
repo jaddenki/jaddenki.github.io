@@ -41,27 +41,27 @@ type SocialLink = {
 }
 
 export const PROJECTS: Project[] = [
-  {
-    name: 'Computing for Community Collaboratory',
-    description:
-      'Building up an undergraduate research generator.',
-    link: '/projects/C3',
-    video:
-      'https://res.cloudinary.com/read-cv/video/upload/t_v_b/v1/1/profileItems/W2azTw5BVbMXfj7F53G92hMVIn32/newProfileItem/d898be8a-7037-4c71-af0c-8997239b050d.mp4?_a=DATAdtAAZAA0',
-    id: 'project1',
-  },
+  // {
+  //   name: 'Computing for Community Collaboratory',
+  //   description:
+  //     'Building up an undergraduate research generator.',
+  //   link: '/projects/C3',
+  //   video:
+  //     'https://res.cloudinary.com/read-cv/video/upload/t_v_b/v1/1/profileItems/W2azTw5BVbMXfj7F53G92hMVIn32/newProfileItem/d898be8a-7037-4c71-af0c-8997239b050d.mp4?_a=DATAdtAAZAA0',
+  //   id: 'project1',
+  // },
 
   {
     name: 'BURST ✷',
-    description: 'A showcase of student-made creative technical projects.',
+    description: 'A showcase of student-made creative technical projects by Purdue Hackers.',
     link: '/projects/BURST',
     video:
-      'https://i.imgur.com/bhl4ceo.jpeg',
+      'https://res.cloudinary.com/dghjime6m/video/upload/v1743790359/ScreenRecording_04-04-2025_14-09-09_1_pcvdpj.mov',
     id: 'project2',
   },
   {
     name: 'ETea',
-    description: 'A video game about an alien bobarista.',
+    description: 'A video game about an alien bobarista. Made with Unity',
     link: '/projects/ETea',
     video:
       'https://res.cloudinary.com/dghjime6m/video/upload/v1743719918/ETea_-_Reveal_Teaser_1080_ihqygh.mp4',
@@ -76,21 +76,31 @@ export const PROJECTS: Project[] = [
         'https://res.cloudinary.com/dghjime6m/video/upload/v1743735503/2025-04-03_22-52-27_ojdghr_8c6d24.mp4',
     id: 'gains',
   },
+
   {
-    name: 'Site',
-    description: 'What you currently are looking at!',
-    link: '/projects/site',
+    name: 'Venture n\' Vision',
+    description: 'Meta Quest 3 VR app where you pitch to robot investors. Using Unity, OpenXR, and Gemini LLM.',
+    link: 'NULL',
     video:
-      'https://i.imgur.com/bhl4ceo.jpeg',
+      'https://res.cloudinary.com/dghjime6m/video/upload/v1743789735/asdfasdfsdfffdsadf_qadqin.mp4',
     id: 'project2',
-  },  {
-    name: 'Circuits',
-    description: 'Wires and whatnot',
-    link: '/projects/site',
+  }, 
+   {
+    name: 'Wires',
+    description: 'An assortment of robots, breadboarding, pcbs, verilog, and other hardware projects.',
+    link: '/projects/wires',
     video:
-      'https://res.cloudinary.com/dghjime6m/video/upload/v1743737601/IMG_9684_k02npm.mov',
+      'https://res.cloudinary.com/dghjime6m/video/upload/v1743791355/IMG_9684_1_xtofny.mov',
     id: 'project2',
   },
+  {
+    name: 'Site',
+    description: 'What you are currently looking at and its previous lives.',
+    link: '/projects/site',
+    video:
+      'https://res.cloudinary.com/dghjime6m/video/upload/v1743792455/IMG_1956_gyjz7p.mov',
+    id: 'project2',
+  }, 
   
 ]
 export const MOTION: Motion[] = [
@@ -187,27 +197,27 @@ export const MATCHA: Matcha[] = [
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
-    company: 'Reglazed Studio',
-    title: 'CEO',
+    company: 'Envision Center',
+    title: 'Software Developer',
     start: '2024',
     end: 'Present',
-    link: 'https://ibelick.com',
+    link: 'https://www.ecshowcase.com/showcase.html',
     id: 'work1',
   },
   {
-    company: 'Freelance',
-    title: 'Design Engineer',
-    start: '2022',
-    end: '2024',
-    link: 'https://ibelick.com',
+    company: 'Computing for Community Collaboratory',
+    title: 'Student Lab Manager',
+    start: '2024',
+    end: 'Present',
+    link: 'https://honors.purdue.edu/research/generators/c3.php',
     id: 'work2',
   },
   {
-    company: 'Freelance',
-    title: 'Front-end Developer',
-    start: '2017',
-    end: 'Present',
-    link: 'https://ibelick.com',
+    company: 'DreamWorld',
+    title: 'Game Dev Marketing Intern',
+    start: '2023',
+    end: '2024',
+    link: 'https://www.playdreamworld.com/',
     id: 'work3',
   },
 ]

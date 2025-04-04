@@ -175,12 +175,12 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
       >
         <h3 className="mb-3 text-lg font-medium">I like matcha.</h3>
-        <YouTubeEmbed id="xZloSkpXagM" />
+        {/* <YouTubeEmbed id="xZloSkpXagM" /> */}
         <p className="mb-5 mt-5 text-base text-zinc-600 dark:text-zinc-400">
-          Current setup is <a target = "_blank" href="https://www.rockysmatcha.com/products/rockys-matcha-single-cultivar-asahi-matcha-20g?variant=47450314899770&country=US&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&gad_source=1&gclid=CjwKCAjw47i_BhBTEiwAaJfPpo-ZRoJL0ET6OWioSfC8AbE1s-wqAh7a7WaVR0h0Q4LfD5NJYqEzxhoC0YUQAvD_BwE" className="text-zinc-900 dark:text-zinc-50">
+          Current setup is <a target = "_blank" href="https://www.rockysmatcha.com/products/rockys-matcha-single-cultivar-asahi-matcha-20g?variant=47450314899770&country=US&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&gad_source=1&gclid=CjwKCAjw47i_BhBTEiwAaJfPpo-ZRoJL0ET6OWioSfC8AbE1s-wqAh7a7WaVR0h0Q4LfD5NJYqEzxhoC0YUQAvD_BwE" className="underline dark:text-zinc-300">
           rocky's asahi matcha</a> and 
           <a href="https://naokimatcha.com/products/superior-blend-matcha" 
-          target = "_blank" className="text-zinc-900 dark:text-zinc-50"> naoki superior blend</a>
+          target = "_blank" className="underline dark:text-zinc-300"> naoki superior blend</a>
         .</p>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {MATCHA.map((project) => (
