@@ -12,3 +12,6 @@ const withMDX = createMDX({
 
 export default withMDX(nextConfig);
 
+module.exports = {
+  distDir: 'out',
+}
