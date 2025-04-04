@@ -4,6 +4,10 @@ import createMDX from '@next/mdx';
 const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  images: {
+    domains: ['res.cloudinary.com', 'i.imgur.com'], // Add any image domains you're using
+    formats: ['image/avif', 'image/webp'],
+  }
 };
 
 const withMDX = createMDX({
