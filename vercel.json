@@ -1,0 +1,9 @@
+{
+  "github": {
+    "silent": true
+  },
+  "framework": "nextjs",
+  "buildCommand": "next build",
+  "installCommand": "npm install",
+  "devCommand": "next dev"
+}
