@@ -16,7 +16,6 @@ type Motion = {
 type Matcha = {
   name: string
   description: string
-  link: string
   image: string
   id: string
 }
@@ -51,6 +50,7 @@ export const PROJECTS: Project[] = [
       'https://res.cloudinary.com/read-cv/video/upload/t_v_b/v1/1/profileItems/W2azTw5BVbMXfj7F53G92hMVIn32/newProfileItem/d898be8a-7037-4c71-af0c-8997239b050d.mp4?_a=DATAdtAAZAA0',
     id: 'project1',
   },
+
   {
     name: 'BURST ✷',
     description: 'A showcase of student-made creative technical projects.',
@@ -68,11 +68,27 @@ export const PROJECTS: Project[] = [
     id: 'project2',
   },
   {
+    name: 'Game Dev NPC AI Sim',
+    description:
+      'AI-driven NPC simulations in Unreal Engine for architectural design testing applications.',
+      link: 'https://www.youtube.com/watch?v=6aNsE8aDWFE',
+      video:
+        'https://res.cloudinary.com/dghjime6m/video/upload/v1743735503/2025-04-03_22-52-27_ojdghr_8c6d24.mp4',
+    id: 'gains',
+  },
+  {
     name: 'Site',
     description: 'What you currently are looking at!',
     link: '/projects/site',
     video:
       'https://i.imgur.com/bhl4ceo.jpeg',
+    id: 'project2',
+  },  {
+    name: 'Circuits',
+    description: 'Wires and whatnot',
+    link: '/projects/site',
+    video:
+      'https://res.cloudinary.com/dghjime6m/video/upload/v1743737601/IMG_9684_k02npm.mov',
     id: 'project2',
   },
   
@@ -135,12 +151,35 @@ export const MOTION: Motion[] = [
 ]
 export const MATCHA: Matcha[] = [
   {
-    name: '10/30 rockys',
+    name: 'Banan milk',
     description:
       'so freaking good',
-    link: 'https://pro.motion-primitives.com/',
     image:
-      'https://i.imgur.com/9xHUmAO.jpeg',
+      'https://i.imgur.com/HvtTUyX.png',
+    id: 'motion1',
+  },
+  {
+    name: 'I tried making it foamy',
+    description:
+      'The foam emphasises the bitterness of the matcha unfortunately',
+    image:
+      'https://i.imgur.com/jfEs9cs.png',
+    id: 'motion1',
+  },
+  {
+    name: 'Heavy cream',
+    description:
+      'My roommate made this (thanks emily)',
+    image:
+      'https://i.imgur.com/VS6UT8f.png',
+    id: 'motion1',
+  },
+  {
+    name: 'Strawberry to go',
+    description:
+      'My roommate also made this (thanks emily)',
+    image:
+      'https://i.imgur.com/FJVrqYC.png',
     id: 'motion1',
   },
 ]

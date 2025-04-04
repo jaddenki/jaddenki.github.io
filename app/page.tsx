@@ -41,10 +41,9 @@ const TRANSITION_SECTION = {
 
 type ProjectVideoProps = {
   src: string
-  isYouTube?: boolean
 }
 
-function ProjectVideo({ src, isYouTube }: ProjectVideoProps) {
+function ProjectVideo({ src }: ProjectVideoProps) {
   return (
     <MorphingDialog
       transition={{
@@ -54,51 +53,23 @@ function ProjectVideo({ src, isYouTube }: ProjectVideoProps) {
       }}
     >
       <MorphingDialogTrigger>
-        {isYouTube ? (
-          <div className="aspect-video w-full">
-            <iframe
-              width="100%"
-              height="100%"
-              src={`https://www.youtube.com/embed/${src}`}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="rounded-xl cursor-zoom-in"
-            ></iframe>
-          </div>
-        ) : (
+        <video
+          src={src}
+          autoPlay
+          loop
+          muted
+          className="aspect-video w-full cursor-zoom-in rounded-xl"
+        />
+      </MorphingDialogTrigger>
+      <MorphingDialogContainer>
+        <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
           <video
             src={src}
             autoPlay
             loop
             muted
-            className="aspect-video w-full cursor-zoom-in rounded-xl"
+            className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]"
           />
-        )}
-      </MorphingDialogTrigger>
-      <MorphingDialogContainer>
-        <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
-          {isYouTube ? (
-            <iframe
-              width="100%"
-              height="100%"
-              src={`https://www.youtube.com/embed/${src}`}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="rounded-xl aspect-video h-[50vh] w-full md:h-[70vh]"
-            ></iframe>
-          ) : (
-            <video
-              src={src}
-              autoPlay
-              loop
-              muted
-              className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]"
-            />
-          )}
         </MorphingDialogContent>
         <MorphingDialogClose
           className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
@@ -166,7 +137,7 @@ export default function Personal() {
       >
         <div className="flex-1">
           <p className="mb-5 text-zinc-600 dark:text-zinc-400">
-          i'm currently studying computer engineering at <a className="underline dark:text-zinc-300" href="https://purdue.edu">purdue university</a>.
+          i'm a second year studying computer engineering <a className="underline dark:text-zinc-300" href="https://purdue.edu">purdue university</a> with an interest in software & visual computing.
             i enjoy working at the crossroads of engineering and artistic expression-- combined, they reshape how we learn, play, and connect.
           </p>
           <p className="mb-5 text-zinc-600 dark:text-zinc-400">
@@ -195,7 +166,7 @@ export default function Personal() {
           {PROJECTS.map((project) => (
             <div key={project.name} className="space-y-2">
               <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                <ProjectVideo src={project.video} isYouTube={project.isYouTube} />
+                <ProjectVideo src={project.video} />
               </div>
               <div className="px-1">
                 <a

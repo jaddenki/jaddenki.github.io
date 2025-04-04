@@ -15,6 +15,7 @@ import { AnimatedBackground } from '@/components/ui/animated-background'
 import {
 MATCHA
 } from '../data'
+import { YouTubeEmbed } from '@/components/YouTubeEmbed'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -173,7 +174,14 @@ export default function Personal() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">Selected Works</h3>
+        <h3 className="mb-3 text-lg font-medium">I like matcha.</h3>
+        <YouTubeEmbed id="xZloSkpXagM" />
+        <p className="mb-5 mt-5 text-base text-zinc-600 dark:text-zinc-400">
+          Current setup is <a target = "_blank" href="https://www.rockysmatcha.com/products/rockys-matcha-single-cultivar-asahi-matcha-20g?variant=47450314899770&country=US&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&gad_source=1&gclid=CjwKCAjw47i_BhBTEiwAaJfPpo-ZRoJL0ET6OWioSfC8AbE1s-wqAh7a7WaVR0h0Q4LfD5NJYqEzxhoC0YUQAvD_BwE" className="text-zinc-900 dark:text-zinc-50">
+          rocky's asahi matcha</a> and 
+          <a href="https://naokimatcha.com/products/superior-blend-matcha" 
+          target = "_blank" className="text-zinc-900 dark:text-zinc-50"> naoki superior blend</a>
+        .</p>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {MATCHA.map((project) => (
             <div key={project.name} className="space-y-2">
@@ -183,11 +191,10 @@ export default function Personal() {
               <div className="px-1">
                 <a
                   className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
-                  href={project.link}
                   target="_blank"
                 >
                   {project.name}
-                  <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full"></span>
+                  <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900"></span>
                 </a>
                 <p className="text-base text-zinc-600 dark:text-zinc-400">
                   {project.description}
