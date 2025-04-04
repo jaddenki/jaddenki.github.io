@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${dmSans.variable} ${polysans.variable} bg-white text-black tracking-tight antialiased dark:bg-zinc-950 dark:text-white`}
+        className={`${dmSans.variable} bg-white text-black tracking-tight antialiased dark:bg-zinc-950 dark:text-white`}
       >
         <ThemeProvider
           enableSystem={true}
